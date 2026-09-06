@@ -69,9 +69,20 @@ font-weight:700;
 color:#ddd;
 text-decoration:none;
 margin-left:18px;
+transition:0.3s;
 }
 .nav a:hover{
 color:var(--gold);
+}
+.linkedin-btn{
+background: #0077b5;
+padding: 6px 14px;
+border-radius: 20px;
+color: white !important;
+font-weight: 600;
+}
+.linkedin-btn:hover{
+background: #005582;
 }
 .hero{
 min-height:100vh;
@@ -112,6 +123,8 @@ font-weight:700;
 border-radius:40px;
 text-decoration:none;
 transition:.3s;
+border:none;
+cursor:pointer;
 }
 .btn:hover{
 transform:translateY(-3px);
@@ -166,10 +179,15 @@ border-radius:18px;
 text-align:center;
 transition:.3s;
 border:1px solid rgba(255,255,255,.08);
+cursor:pointer;
 }
 .skill:hover{
 transform:translateY(-8px);
 border-color:var(--gold);
+}
+.salad-highlight {
+background: rgba(212, 175, 55, 0.15);
+border: 1px solid var(--gold);
 }
 .timeline{
 border-left:2px solid var(--gold);
@@ -216,6 +234,85 @@ border-color:var(--gold);
 color:var(--blue);
 margin-bottom:10px;
 }
+
+/* Gallery Section Styles */
+.gallery-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 20px;
+}
+.gallery-item {
+position: relative;
+border-radius: 18px;
+overflow: hidden;
+border: 1px solid rgba(255,255,255,.08);
+height: 220px;
+}
+.gallery-item img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: transform 0.4s;
+}
+.gallery-item:hover img {
+transform: scale(1.1);
+}
+
+/* Modal Popup Styles */
+.modal {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.8);
+backdrop-filter: blur(8px);
+z-index: 1000;
+align-items: center;
+justify-content: center;
+}
+.modal-content {
+background: #111827;
+border: 1px solid var(--gold);
+padding: 30px;
+border-radius: 20px;
+max-width: 550px;
+width: 90%;
+position: relative;
+box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+.close-modal {
+position: absolute;
+top: 15px;
+right: 20px;
+font-size: 28px;
+color: #aaa;
+cursor: pointer;
+}
+.close-modal:hover {
+color: var(--gold);
+}
+.salad-list {
+margin-top: 20px;
+list-style: none;
+}
+.salad-list li {
+background: rgba(255,255,255,0.05);
+margin-bottom: 12px;
+padding: 12px 16px;
+border-radius: 10px;
+border-left: 3px solid var(--gold);
+}
+.salad-list h4 {
+color: var(--blue);
+margin-bottom: 4px;
+}
+.salad-list p {
+font-size: 14px;
+color: #ccc;
+}
+
 .contact{
 text-align:center;
 line-height:2;
@@ -249,6 +346,7 @@ gap:12px;
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
+align-items:center;
 }
 }
 </style>
@@ -261,8 +359,10 @@ justify-content:center;
 <div>
 <a href="#about">About</a>
 <a href="#skills">Skills</a>
+<a href="#gallery">Gallery</a>
 <a href="#experience">Experience</a>
 <a href="#contact">Contact</a>
+<a href="https://www.linkedin.com/in/YOUR_LINKEDIN_USERNAME" target="_blank" class="linkedin-btn">LinkedIn</a>
 </div>
 </div>
 </nav>
@@ -273,19 +373,9 @@ justify-content:center;
 <p>
 Driven, certified culinary and baking professional with a solid foundation in Food & Beverage Production and commercial kitchen operations. Currently working as an Assistant Chef at Salad Flexi, bringing diverse experience from renowned brands like Cooper's Bakery Bangladesh, Lakeshore Heights, and Indulge Food & Beverage Ltd.
 Holds formal certification in Food & Beverage Production (along with practical internship training) and Bakery & Pastry Production (RPL Level-3). Proven ability to combine culinary precision with strict Good Manufacturing Practice (GMP) and high food safety standards in fast-paced operational environments.
-Core Expertise & Technical Skills:
-• Food & Beverage Production & Operations
-• Bakery & Pastry Production (RPL Level-3 Certified)
-• Hot Kitchen Operations & Meal Prep Management
-• Good Manufacturing Practice (GMP) & Hygiene Control
-• Kitchen Efficiency & Quality Assurance
-Education & Training:
-• Bachelor of Social Sciences — Shanto Mariam University of Creative Technology
-• Professional Certificate & Internship in F&B Production
-• RPL Level-3 Certification in Bakery & Pastry Production
-Always open to connecting with hospitality leaders, master bakers, culinary professionals, and industry peers.
 </p>
 <a href="#contact" class="btn">Contact Me</a>
+<button id="openSaladModalBtn" class="btn" style="margin-left: 10px; background: transparent; border: 2px solid var(--gold); color: white;">🥗 View Salad Specialties</button>
 </div>
 <div class="hero-img">
 <div id="card3d">
@@ -309,7 +399,7 @@ My expertise includes food preparation, hygiene management, SOP implementation, 
 <h2 class="title">My Skills</h2>
 <div class="grid">
     <div class="skill">Food Preparation</div>
-    <div class="skill">Salad Production</div>
+    <div class="skill salad-highlight" id="saladSkillBtn">Salad Production 🥗 (Click)</div>
     <div class="skill">Kitchen Operations</div>
     <div class="skill">Food Hygiene</div>
     <div class="skill">SOP Compliance</div>
@@ -321,7 +411,27 @@ My expertise includes food preparation, hygiene management, SOP implementation, 
     <div class="skill">JavaScript</div>
     <div class="skill">Web Development</div>
 </div>
+</div>
 </section>
+
+<!-- Gallery Section -->
+<section id="gallery">
+<div class="container">
+<h2 class="title">Gallery</h2>
+<div class="gallery-grid">
+    <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80" alt="Salad Production">
+    </div>
+    <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80" alt="Fresh Salad Prep">
+    </div>
+    <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1505576399279-565b52d4ac71?auto=format&fit=crop&w=600&q=80" alt="Culinary Art">
+    </div>
+</div>
+</div>
+</section>
+
 <section id="experience">
 <div class="container">
 <h2 class="title">Experience</h2>
@@ -370,10 +480,41 @@ My expertise includes food preparation, hygiene management, SOP implementation, 
 </div>
 </div>
 </section>
+
+<!-- Salad Production Modal Popup -->
+<div id="saladModal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <h3 style="color: var(--gold); font-size: 24px;">🥗 My Salad Specialties</h3>
+    <p style="color: #aaa; margin-top: 5px;">Here are some signature salads I specialize in preparing with perfection:</p>
+    
+    <ul class="salad-list">
+      <li>
+        <h4>Classic Caesar Salad</h4>
+        <p>Crisp romaine lettuce, garlic croutons, parmesan cheese with homemade Caesar dressing.</p>
+      </li>
+      <li>
+        <h4>Mediterranean Greek Salad</h4>
+        <p>Fresh cucumbers, ripe tomatoes, red onion, Kalamata olives, and creamy feta cheese.</p>
+      </li>
+      <li>
+        <h4>Healthy Protein Salad</h4>
+        <p>Mixed greens, grilled chicken/tofu, avocado, quinoa, and lemon-tahini vinaigrette.</p>
+      </li>
+      <li>
+        <h4>Custom Chef's Special Salad</h4>
+        <p>Tailored seasonal salad bowls according to customer guidelines and dietary preferences.</p>
+      </li>
+    </ul>
+  </div>
+</div>
+
 <footer>
 © 2026 Samiul Bashar | Multi Cuisine Chef
 </footer>
+
 <script>
+// 3D Card Effect
 const card=document.getElementById("card3d");
 card.addEventListener("mousemove",(e)=>{
 const r=card.getBoundingClientRect();
@@ -384,6 +525,8 @@ card.style.transform=`rotateY(${x*18}deg) rotateX(${-y*18}deg)`;
 card.addEventListener("mouseleave",()=>{
 card.style.transform="rotateY(0deg) rotateX(0deg)";
 });
+
+// Particle Effect
 const wrap=document.getElementById("particles");
 for(let i=0;i<30;i++){
 const p=document.createElement("div");
@@ -396,6 +539,30 @@ p.style.animationDuration=(Math.random()*12+8)+"s";
 p.style.animationDelay=(-Math.random()*12)+"s";
 wrap.appendChild(p);
 }
+
+// Salad Production Modal Functionality
+const modal = document.getElementById("saladModal");
+const heroBtn = document.getElementById("openSaladModalBtn");
+const skillBtn = document.getElementById("saladSkillBtn");
+const closeBtn = document.querySelector(".close-modal");
+
+function openModal() {
+  modal.style.display = "flex";
+}
+
+function closeModal() {
+  modal.style.display = "none";
+}
+
+heroBtn.addEventListener("click", openModal);
+skillBtn.addEventListener("click", openModal);
+closeBtn.addEventListener("click", closeModal);
+
+window.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    closeModal();
+  }
+});
 </script>
 </body>
 </html>
