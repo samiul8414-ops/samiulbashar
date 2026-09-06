@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samiul Bashar | Multi Cuisine Chef</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+scroll-behavior:smooth;
+}
+body{
+background:#0b0f16;
+color:white;
+overflow-x:hidden;
+}
+:root{
+--blue:#3b82f6;
+--gold:#d4af37;
+}
+#particles{
+position:fixed;
+inset:0;
+z-index:-1;
+overflow:hidden;
+}
+.particle{
+position:absolute;
+width:6px;
+height:6px;
+border-radius:50%;
+background:rgba(212,175,55,.35);
+animation:float linear infinite;
+}
+@keyframes float{
+from{transform:translateY(100vh);}
+to{transform:translateY(-120vh);}
+}
+.container{
+max-width:1150px;
+margin:auto;
+padding:0 20px;
+}
+nav{
+position:fixed;
+top:0;
+width:100%;
+background:rgba(0,0,0,.35);
+backdrop-filter:blur(12px);
+border-bottom:1px solid rgba(255,255,255,.08);
+z-index:100;
+}
+.nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 0;
+}
+.logo{
+color:var(--gold);
+font-size:24px;
+font-weight:700;
+}
+.nav a{
+color:#ddd;
+text-decoration:none;
+margin-left:18px;
+}
+.nav a:hover{
+color:var(--gold);
+}
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:50px;
+flex-wrap:wrap;
+padding-top:90px;
+}
+.hero-text{
+flex:1;
+}
+.hero-text h1{
+font-size:55px;
+color:var(--blue);
+white-space:nowrap;
+text-shadow:0 0 12px rgba(59,130,246,.7),0 0 35px rgba(59,130,246,.35);
+}
+.hero-text h2{
+color:var(--gold);
+margin:12px 0;
+font-weight:400;
+}
+.hero-text p{
+color:#cfcfcf;
+line-height:1.9;
+max-width:550px;
+margin-top:15px;
+}
+.btn{
+display:inline-block;
+margin-top:30px;
+padding:13px 30px;
+background:var(--gold);
+color:black;
+font-weight:700;
+border-radius:40px;
+text-decoration:none;
+transition:.3s;
+}
+.btn:hover{
+transform:translateY(-3px);
+box-shadow:0 10px 25px rgba(212,175,55,.35);
+}
+.hero-img{
+flex:1;
+display:flex;
+justify-content:center;
+}
+#card3d{
+background:rgba(255,255,255,.06);
+backdrop-filter:blur(14px);
+padding:15px;
+border-radius:30px;
+border:1px solid rgba(255,255,255,.08);
+transition:transform .15s;
+box-shadow:0 20px 40px rgba(0,0,0,.45);
+}
+#card3d img{
+width:320px;
+height:400px;
+object-fit:cover;
+border-radius:22px;
+border:2px solid var(--gold);
+}
+section{
+padding:90px 0;
+}
+.title{
+text-align:center;
+font-size:36px;
+color:var(--gold);
+margin-bottom:40px;
+}
+.about{
+text-align:center;
+max-width:760px;
+margin:auto;
+color:#cfcfcf;
+line-height:1.8;
+}
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+gap:18px;
+}
+.skill{
+background:rgba(255,255,255,.06);
+padding:22px;
+border-radius:18px;
+text-align:center;
+transition:.3s;
+border:1px solid rgba(255,255,255,.08);
+}
+.skill:hover{
+transform:translateY(-8px);
+border-color:var(--gold);
+}
+.timeline{
+border-left:2px solid var(--gold);
+padding-left:25px;
+}
+.item{
+margin-bottom:35px;
+position:relative;
+}
+.item::before{
+content:"";
+position:absolute;
+left:-34px;
+top:8px;
+width:15px;
+height:15px;
+background:var(--gold);
+border-radius:50%;
+}
+.item h3{
+color:var(--blue);
+margin-bottom:8px;
+}
+.item p{
+color:#cfcfcf;
+}
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:20px;
+}
+.card{
+background:rgba(255,255,255,.06);
+padding:24px;
+border-radius:18px;
+transition:.3s;
+border:1px solid rgba(255,255,255,.08);
+}
+.card:hover{
+transform:scale(1.03);
+border-color:var(--gold);
+}
+.card h3{
+color:var(--blue);
+margin-bottom:10px;
+}
+.contact{
+text-align:center;
+line-height:2;
+font-size:18px;
+color:#ddd;
+}
+footer{
+text-align:center;
+padding:25px;
+border-top:1px solid rgba(255,255,255,.08);
+color:#888;
+}
+@media(max-width:768px){
+.hero{
+flex-direction:column-reverse;
+text-align:center;
+}
+.hero-text h1{
+font-size:36px;
+white-space:normal;
+}
+.hero-text p{
+margin:auto;
+}
+.nav{
+flex-wrap:wrap;
+justify-content:center;
+gap:12px;
+}
+.nav div:last-child{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+}
+}
+</style>
+</head>
+<body>
+<div id="particles"></div>
+<nav>
+<div class="container nav">
+<div class="logo">Portfolio</div>
+<div>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#experience">Experience</a>
+<a href="#contact">Contact</a>
+</div>
+</div>
+</nav>
+<div class="container hero">
+<div class="hero-text">
+<h1>Samiul Bashar</h1>
+<h2>Multi Cuisine Chef</h2>
+<p>
+Driven, certified culinary and baking professional with a solid foundation in Food & Beverage Production and commercial kitchen operations. Currently working as an Assistant Chef at Salad Flexi, bringing diverse experience from renowned brands like Cooper's Bakery Bangladesh, Lakeshore Heights, and Indulge Food & Beverage Ltd.
+Holds formal certification in Food & Beverage Production (along with practical internship training) and Bakery & Pastry Production (RPL Level-3). Proven ability to combine culinary precision with strict Good Manufacturing Practice (GMP) and high food safety standards in fast-paced operational environments.
+Core Expertise & Technical Skills:
+• Food & Beverage Production & Operations
+• Bakery & Pastry Production (RPL Level-3 Certified)
+• Hot Kitchen Operations & Meal Prep Management
+• Good Manufacturing Practice (GMP) & Hygiene Control
+• Kitchen Efficiency & Quality Assurance
+Education & Training:
+• Bachelor of Social Sciences — Shanto Mariam University of Creative Technology
+• Professional Certificate & Internship in F&B Production
+• RPL Level-3 Certification in Bakery & Pastry Production
+Always open to connecting with hospitality leaders, master bakers, culinary professionals, and industry peers.
+</p>
+<a href="#contact" class="btn">Contact Me</a>
+</div>
+<div class="hero-img">
+<div id="card3d">
+<img src="https://uploads.onecompiler.io/452bqqd7j/1788725236504/ChatGPT%20Image%20Aug%2030,%202026,%2003_32_37%20PM.png" alt="Samiul Bashar">
+</div>
+</div>
+</div>
+<section id="about">
+<div class="container">
+<h2 class="title">About Me</h2>
+<p class="about">
+I'm a Multi Cuisine Chef from Dhaka, Bangladesh.
+Currently working as an Assistant Chef at Salad Flexi.
+I have previous experience at Indulge Food & Beverage Ltd., Lakeshore Heights, and Cooper's Bakery Bangladesh.
+My expertise includes food preparation, hygiene management, SOP implementation, and inventory control.
+</p>
+</div>
+</section>
+<section id="skills">
+<div class="container">
+<h2 class="title">My Skills</h2>
+<div class="grid">
+    <div class="skill">Food Preparation</div>
+    <div class="skill">Salad Production</div>
+    <div class="skill">Kitchen Operations</div>
+    <div class="skill">Food Hygiene</div>
+    <div class="skill">SOP Compliance</div>
+    <div class="skill">Inventory Management</div>
+
+    <div class="skill">Microsoft Word</div>
+    <div class="skill">Microsoft Excel</div>
+    <div class="skill">HTML & CSS</div>
+    <div class="skill">JavaScript</div>
+    <div class="skill">Web Development</div>
+</div>
+</section>
+<section id="experience">
+<div class="container">
+<h2 class="title">Experience</h2>
+<div class="timeline">
+<div class="item">
+<h3>Assistant Chef — Salad Flexi</h3>
+<p>Food preparation, hygiene maintenance, SOP compliance, and inventory management.</p>
+</div>
+<div class="item">
+<h3>Commis Chef — Indulge Food & Beverage Ltd.</h3>
+<p>Multi-cuisine food preparation, kitchen coordination, quality control, and professional service standards.</p>
+</div>
+<div class="item">
+<h3>Commis Chef — Lakeshore Heights</h3>
+<p>Hotel kitchen operations and quality food production.</p>
+</div>
+<div class="item">
+<h3>Hot Kitchen Preparer — Cooper's Bakery Bangladesh</h3>
+<p>Maintained production quality and hygiene standards in hot kitchen operations.</p>
+</div>
+</div>
+</div>
+</section>
+<section>
+<div class="container">
+<h2 class="title">Certificates</h2>
+<div class="cards">
+<div class="card">
+<h3>Food & Beverage Production</h3>
+<p>Cooking Level 2 & 3 Certification.</p>
+</div>
+<div class="card">
+<h3>Bakery & Pastry Production</h3>
+<p>RPL Level 3 Certification.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="contact">
+<div class="container">
+<h2 class="title">Contact</h2>
+<div class="contact">
+<p>📧 samiul8414@gmail.com</p>
+<p>📱 +8801740668414</p>
+<p>📍 Mirpur, Dhaka, Bangladesh</p>
+</div>
+</div>
+</section>
+<footer>
+© 2026 Samiul Bashar | Multi Cuisine Chef
+</footer>
+<script>
+const card=document.getElementById("card3d");
+card.addEventListener("mousemove",(e)=>{
+const r=card.getBoundingClientRect();
+const x=(e.clientX-r.left)/r.width-.5;
+const y=(e.clientY-r.top)/r.height-.5;
+card.style.transform=`rotateY(${x*18}deg) rotateX(${-y*18}deg)`;
+});
+card.addEventListener("mouseleave",()=>{
+card.style.transform="rotateY(0deg) rotateX(0deg)";
+});
+const wrap=document.getElementById("particles");
+for(let i=0;i<30;i++){
+const p=document.createElement("div");
+p.className="particle";
+const s=Math.random()*8+3;
+p.style.width=s+"px";
+p.style.height=s+"px";
+p.style.left=Math.random()*100+"%";
+p.style.animationDuration=(Math.random()*12+8)+"s";
+p.style.animationDelay=(-Math.random()*12)+"s";
+wrap.appendChild(p);
+}
+</script>
+</body>
+</html>
