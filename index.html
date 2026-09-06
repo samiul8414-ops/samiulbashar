@@ -238,15 +238,25 @@ margin-bottom:10px;
 /* Gallery Section Styles */
 .gallery-grid {
 display: grid;
-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-gap: 20px;
+grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+gap: 24px;
 }
 .gallery-item {
-position: relative;
+background: rgba(255,255,255,.05);
 border-radius: 18px;
 overflow: hidden;
 border: 1px solid rgba(255,255,255,.08);
-height: 220px;
+transition: transform 0.3s, border-color 0.3s;
+display: flex;
+flex-direction: column;
+}
+.gallery-item:hover {
+transform: translateY(-5px);
+border-color: var(--gold);
+}
+.gallery-img-container {
+height: 200px;
+overflow: hidden;
 }
 .gallery-item img {
 width: 100%;
@@ -255,7 +265,15 @@ object-fit: cover;
 transition: transform 0.4s;
 }
 .gallery-item:hover img {
-transform: scale(1.1);
+transform: scale(1.08);
+}
+.gallery-title {
+padding: 15px;
+text-align: center;
+font-weight: 600;
+color: #e5e7eb;
+font-size: 16px;
+background: rgba(0,0,0,0.2);
 }
 
 /* Modal Popup Styles */
@@ -266,7 +284,7 @@ top: 0;
 left: 0;
 width: 100%;
 height: 100%;
-background: rgba(0, 0, 0, 0.8);
+background: rgba(0, 0, 0, 0.85);
 backdrop-filter: blur(8px);
 z-index: 1000;
 align-items: center;
@@ -277,8 +295,10 @@ background: #111827;
 border: 1px solid var(--gold);
 padding: 30px;
 border-radius: 20px;
-max-width: 550px;
+max-width: 600px;
 width: 90%;
+max-height: 80vh;
+overflow-y: auto;
 position: relative;
 box-shadow: 0 10px 30px rgba(0,0,0,0.8);
 }
@@ -299,18 +319,12 @@ list-style: none;
 }
 .salad-list li {
 background: rgba(255,255,255,0.05);
-margin-bottom: 12px;
+margin-bottom: 10px;
 padding: 12px 16px;
 border-radius: 10px;
 border-left: 3px solid var(--gold);
-}
-.salad-list h4 {
-color: var(--blue);
-margin-bottom: 4px;
-}
-.salad-list p {
-font-size: 14px;
-color: #ccc;
+color: #ddd;
+font-size: 15px;
 }
 
 .contact{
@@ -371,11 +385,11 @@ align-items:center;
 <h1>Samiul Bashar</h1>
 <h2>Multi Cuisine Chef</h2>
 <p>
-Driven, certified culinary and baking professional with a solid foundation in Food & Beverage Production and commercial kitchen operations. Currently working as an Assistant Chef at Salad Flexi, bringing diverse experience from renowned brands like Cooper's Bakery Bangladesh, Lakeshore Heights, and Indulge Food & Beverage Ltd.
-Holds formal certification in Food & Beverage Production (along with practical internship training) and Bakery & Pastry Production (RPL Level-3). Proven ability to combine culinary precision with strict Good Manufacturing Practice (GMP) and high food safety standards in fast-paced operational environments.
+Driven, certified culinary and baking professional with a solid foundation in Food & Beverage Production and commercial kitchen operations[cite: 1, 2]. Currently working as an Assistant Chef at Salad Flexi, bringing diverse experience from renowned brands like Cooper's Bakery Bangladesh, Lakeshore Heights, and Indulge Food & Beverage Ltd[cite: 1, 2].
+Holds formal certification in Food & Beverage Production (along with practical internship training) and Bakery & Pastry Production (RPL Level-3)[cite: 1, 2].
 </p>
 <a href="#contact" class="btn">Contact Me</a>
-<button id="openSaladModalBtn" class="btn" style="margin-left: 10px; background: transparent; border: 2px solid var(--gold); color: white;">🥗 View Salad Specialties</button>
+<button id="openSaladModalBtn" class="btn" style="margin-left: 10px; background: transparent; border: 2px solid var(--gold); color: white;">🥗 View Salad Menu</button>
 </div>
 <div class="hero-img">
 <div id="card3d">
@@ -383,17 +397,19 @@ Holds formal certification in Food & Beverage Production (along with practical i
 </div>
 </div>
 </div>
+
 <section id="about">
 <div class="container">
 <h2 class="title">About Me</h2>
 <p class="about">
-I'm a Multi Cuisine Chef from Dhaka, Bangladesh.
-Currently working as an Assistant Chef at Salad Flexi.
-I have previous experience at Indulge Food & Beverage Ltd., Lakeshore Heights, and Cooper's Bakery Bangladesh.
-My expertise includes food preparation, hygiene management, SOP implementation, and inventory control.
+I'm a Multi Cuisine Chef from Dhaka, Bangladesh[cite: 1, 2].
+Currently working as an Assistant Chef at Salad Flexi[cite: 1, 2].
+I have previous experience at Indulge Food & Beverage Ltd., Lakeshore Heights, and Cooper's Bakery Bangladesh[cite: 1, 2].
+My expertise includes food preparation, hygiene management, SOP implementation, and inventory control[cite: 1, 2].
 </p>
 </div>
 </section>
+
 <section id="skills">
 <div class="container">
 <h2 class="title">My Skills</h2>
@@ -417,17 +433,135 @@ My expertise includes food preparation, hygiene management, SOP implementation, 
 <!-- Gallery Section -->
 <section id="gallery">
 <div class="container">
-<h2 class="title">Gallery</h2>
+<h2 class="title">Salad Gallery</h2>
 <div class="gallery-grid">
+
     <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80" alt="Salad Production">
+        <div class="gallery-img-container">
+            <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80" alt="Classic Persian Shirazi Salad">
+        </div>
+        <div class="gallery-title">Classic Persian Shirazi Salad</div>
     </div>
+
     <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80" alt="Fresh Salad Prep">
+        <div class="gallery-img-container">
+            <img src="https://images.unsplash.com/photo-1621263764928-df1444c5e859?auto=format&fit=crop&w=600&q=80" alt="Cold Chicken Pasta">
+        </div>
+        <div class="gallery-title">Cold Chicken Pasta</div>
     </div>
+
     <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1505576399279-565b52d4ac71?auto=format&fit=crop&w=600&q=80" alt="Culinary Art">
+        <div class="gallery-img-container">
+            <img src="https://images.unsplash.com/photo-1551248429-40975aa4de74?auto=format&fit=crop&w=600&q=80" alt="Corn Salsa">
+        </div>
+        <div class="gallery-title">Corn Salsa</div>
     </div>
+
+    <div class="gallery-item">
+        <div class="gallery-img-container">
+            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80" alt="Chipotle Chicken Salad">
+        </div>
+        <div class="gallery-title">Chipotle Chicken Salad</div>
+    </div>
+
+    <div class="gallery-item">
+        <div class="gallery-img-container">
+            <img src="https://images.unsplash.com/photo-1550304943-4f24f54ddde9?auto=format&fit=crop&w=600&q=80" alt="Caesar Salad">
+        </div>
+        <div class="gallery-title">Caesar Salad</div>
+    </div>
+
+    <div class="gallery-item">
+        <div class="gallery-img-container">
+            <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=600&q=80" alt="Kachumber Salad">
+        </div>
+        <div class="gallery-title">Kachumber Salad</div>
+    </div>
+
+    <div class="gallery-item">
+        <div class="gallery-img-container">
+            <img src="https://images.unsplash.com/photo-1515543237350-b3eea1ec8082?auto=format&fit=crop&w=600&q=80" alt="Green Garden Salad">
+        </div>
+        <div class="gallery-title">Green Garden Salad</div>
+    </div>
+
+    <div class="gallery-item">
+        <div class="gallery-img-container">
+            <img src="https://images.unsplash.com/photo-1505576399279-565b52d4ac71?auto=format&fit=crop&w=600&q=80" alt="Pesto Chicken Salad">
+        </div>
+        <div class="gallery-title">Pesto Chicken Salad</div>
+    </div>
+
+    <div class="gallery-item">
+        <div class="gallery-img-container">
+            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80" alt="Greek Salad">
+        </div>
+        <div class="gallery-title">Greek Salad</div>
+    </div>
+
+    <div class="gallery-item">
+        <div class="gallery-img-container">
+            <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80" alt="Russian Salad">
+        </div>
+        <div class="gallery-title">Russian Salad</div>
+    </div>
+
+    <div class="gallery-item">
+        <div class="gallery-img-container">
+            <img src="https://images.unsplash.com/photo-1592417817098-8f3d6eb12765?auto=format&fit=crop&w=600&q=80" alt="Carrot Ribbon Salad">
+        </div>
+        <div class="gallery-title">Carrot Ribbon Salad</div>
+    </div>
+
+    <div class="gallery-item">
+        <div class="gallery-img-container">
+            <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=600&q=80" alt="Chickpeas Chaat Salad">
+        </div>
+        <div class="gallery-title">Chickpeas Chaat Salad</div>
+    </div>
+
+    <div class="gallery-item">
+        <div class="gallery-img-container">
+            <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=600&q=80" alt="Japanese Style Cucumber Salad">
+        </div>
+        <div class="gallery-title">Japanese Style Cucumber Salad</div>
+    </div>
+
+    <div class="gallery-item">
+        <div class="gallery-img-container">
+            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80" alt="Exotic Chicken Salad">
+        </div>
+        <div class="gallery-title">Exotic Chicken Salad</div>
+    </div>
+
+    <div class="gallery-item">
+        <div class="gallery-img-container">
+            <img src="https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?auto=format&fit=crop&w=600&q=80" alt="Chicken Peach Salad">
+        </div>
+        <div class="gallery-title">Chicken Peach Salad</div>
+    </div>
+
+    <div class="gallery-item">
+        <div class="gallery-img-container">
+            <img src="https://images.unsplash.com/photo-1543339308-43e59d6b73a6?auto=format&fit=crop&w=600&q=80" alt="Pesto Chicken & Olive Salad">
+        </div>
+        <div class="gallery-title">Pesto Chicken & Olive Salad</div>
+    </div>
+
+    <div class="gallery-item">
+        <div class="gallery-img-container">
+            <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=600&q=80" alt="Orange Chicken & Almond Salad">
+        </div>
+        <div class="gallery-title">Orange Chicken & Almond Salad</div>
+    </div>
+
+    <div class="gallery-item">
+        <div class="gallery-img-container">
+            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80" alt="Chicken Santa Fe Salad">
+        </div>
+        <div class="gallery-title">Chicken Santa Fe Salad</div>
+    </div>
+
 </div>
 </div>
 </section>
@@ -438,38 +572,40 @@ My expertise includes food preparation, hygiene management, SOP implementation, 
 <div class="timeline">
 <div class="item">
 <h3>Assistant Chef — Salad Flexi</h3>
-<p>Food preparation, hygiene maintenance, SOP compliance, and inventory management.</p>
+<p>Food preparation, hygiene maintenance, SOP compliance, and inventory management[cite: 1, 2].</p>
 </div>
 <div class="item">
 <h3>Commis Chef — Indulge Food & Beverage Ltd.</h3>
-<p>Multi-cuisine food preparation, kitchen coordination, quality control, and professional service standards.</p>
+<p>Multi-cuisine food preparation, kitchen coordination, quality control, and professional service standards[cite: 1, 2].</p>
 </div>
 <div class="item">
 <h3>Commis Chef — Lakeshore Heights</h3>
-<p>Hotel kitchen operations and quality food production.</p>
+<p>Hotel kitchen operations and quality food production[cite: 1, 2].</p>
 </div>
 <div class="item">
 <h3>Hot Kitchen Preparer — Cooper's Bakery Bangladesh</h3>
-<p>Maintained production quality and hygiene standards in hot kitchen operations.</p>
+<p>Maintained production quality and hygiene standards in hot kitchen operations[cite: 1, 2].</p>
 </div>
 </div>
 </div>
 </section>
+
 <section>
 <div class="container">
 <h2 class="title">Certificates</h2>
 <div class="cards">
 <div class="card">
 <h3>Food & Beverage Production</h3>
-<p>Cooking Level 2 & 3 Certification.</p>
+<p>Cooking Level 2 & 3 Certification[cite: 1, 2].</p>
 </div>
 <div class="card">
 <h3>Bakery & Pastry Production</h3>
-<p>RPL Level 3 Certification.</p>
+<p>RPL Level 3 Certification[cite: 1, 2].</p>
 </div>
 </div>
 </div>
 </section>
+
 <section id="contact">
 <div class="container">
 <h2 class="title">Contact</h2>
@@ -486,25 +622,27 @@ My expertise includes food preparation, hygiene management, SOP implementation, 
   <div class="modal-content">
     <span class="close-modal">&times;</span>
     <h3 style="color: var(--gold); font-size: 24px;">🥗 My Salad Specialties</h3>
-    <p style="color: #aaa; margin-top: 5px;">Here are some signature salads I specialize in preparing with perfection:</p>
+    <p style="color: #aaa; margin-top: 5px;">Specialized recipes prepared with freshness and perfection:</p>
     
     <ul class="salad-list">
-      <li>
-        <h4>Classic Caesar Salad</h4>
-        <p>Crisp romaine lettuce, garlic croutons, parmesan cheese with homemade Caesar dressing.</p>
-      </li>
-      <li>
-        <h4>Mediterranean Greek Salad</h4>
-        <p>Fresh cucumbers, ripe tomatoes, red onion, Kalamata olives, and creamy feta cheese.</p>
-      </li>
-      <li>
-        <h4>Healthy Protein Salad</h4>
-        <p>Mixed greens, grilled chicken/tofu, avocado, quinoa, and lemon-tahini vinaigrette.</p>
-      </li>
-      <li>
-        <h4>Custom Chef's Special Salad</h4>
-        <p>Tailored seasonal salad bowls according to customer guidelines and dietary preferences.</p>
-      </li>
+      <li>Classic Persian Shirazi Salad</li>
+      <li>Cold Chicken Pasta</li>
+      <li>Corn Salsa</li>
+      <li>Chipotle Chicken Salad</li>
+      <li>Caesar Salad</li>
+      <li>Kachumber Salad</li>
+      <li>Green Garden Salad</li>
+      <li>Pesto Chicken Salad</li>
+      <li>Greek Salad</li>
+      <li>Russian Salad</li>
+      <li>Carrot Ribbon Salad</li>
+      <li>Chickpeas Chaat Salad</li>
+      <li>Japanese Style Cucumber Salad</li>
+      <li>Exotic Chicken Salad</li>
+      <li>Chicken Peach Salad</li>
+      <li>Pesto Chicken & Olive Salad</li>
+      <li>Orange Chicken & Almond Salad</li>
+      <li>Chicken Santa Fe Salad</li>
     </ul>
   </div>
 </div>
@@ -514,7 +652,6 @@ My expertise includes food preparation, hygiene management, SOP implementation, 
 </footer>
 
 <script>
-// 3D Card Effect
 const card=document.getElementById("card3d");
 card.addEventListener("mousemove",(e)=>{
 const r=card.getBoundingClientRect();
@@ -526,7 +663,6 @@ card.addEventListener("mouseleave",()=>{
 card.style.transform="rotateY(0deg) rotateX(0deg)";
 });
 
-// Particle Effect
 const wrap=document.getElementById("particles");
 for(let i=0;i<30;i++){
 const p=document.createElement("div");
@@ -540,7 +676,6 @@ p.style.animationDelay=(-Math.random()*12)+"s";
 wrap.appendChild(p);
 }
 
-// Salad Production Modal Functionality
 const modal = document.getElementById("saladModal");
 const heroBtn = document.getElementById("openSaladModalBtn");
 const skillBtn = document.getElementById("saladSkillBtn");
